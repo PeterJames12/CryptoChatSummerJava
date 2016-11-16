@@ -1,4 +1,4 @@
-package chat;
+package reserv.chat;
 
 import javax.crypto.BadPaddingException;
 import javax.crypto.Cipher;
@@ -13,11 +13,10 @@ import java.util.Base64;
 
 class Decrypt {
     static String Decrypt() throws InvalidKeySpecException, NoSuchAlgorithmException, NoSuchPaddingException, InvalidKeyException, BadPaddingException, IllegalBlockSizeException {
-
         Cipher cipher = Cipher.getInstance("RSA");
         PrivateKey key = KeyToString.StringToKey();
         cipher.init(Cipher.DECRYPT_MODE, key);
-        byte[] cipherTextBytes = Base64.getDecoder().decode(Together.decrypter.getBytes());
+        byte[] cipherTextBytes = Base64.getDecoder().decode(Main.textToDecrypt.getBytes());
         byte[] decryptedBytes = cipher.doFinal(cipherTextBytes);
         return new String(decryptedBytes);
     }

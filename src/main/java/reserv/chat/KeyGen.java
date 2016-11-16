@@ -1,31 +1,14 @@
-package chat;
+package reserv.chat;
 
 import java.io.IOException;
 import java.security.*;
 import java.util.Base64;
+import java.util.Scanner;
 
 class KeyGen {
 
-
-    String generatePrivateKey() throws NoSuchAlgorithmException {
-
-        KeyPairGenerator keyPairGenerator = KeyPairGenerator.getInstance("RSA");
-        keyPairGenerator.initialize(1024);
-        KeyPair keyPair = keyPairGenerator.generateKeyPair();
-        PrivateKey privateKey = keyPair.getPrivate();
-        return Base64.getEncoder().encodeToString(privateKey.getEncoded());
-    }
-
-    String generatePublicKey() throws NoSuchAlgorithmException {
-
-        KeyPairGenerator keyPairGenerator = KeyPairGenerator.getInstance("RSA");
-        keyPairGenerator.initialize(1024);
-        KeyPair keyPair = keyPairGenerator.generateKeyPair();
-        PublicKey publicKey = keyPair.getPublic();
-        return Base64.getEncoder().encodeToString(publicKey.getEncoded());
-    }
-
     static void keyGen() throws NoSuchAlgorithmException, IOException {
+        Scanner scanner = new Scanner(System.in);
         KeyPairGenerator keyPairGenerator = KeyPairGenerator.getInstance("RSA");
         keyPairGenerator.initialize(1024);
         KeyPair keyPair = keyPairGenerator.generateKeyPair();
